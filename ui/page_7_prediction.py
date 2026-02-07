@@ -137,27 +137,8 @@ def render_prediction():
                     st.markdown(f"• {disease}: **{score:.2%}**")
 
             # ---------------- GRAD-CAM (Mock) ----------------
-            st.markdown("""
-            <div class="card">
-                <h3>🔥 Grad-CAM Visualization</h3>
-            </div>
-            """, unsafe_allow_html=True)
-
-            gradcam_img = generate_mock_gradcam(image)
-
-            g1, g2 = st.columns(2)
-            with g1:
-                st.image(image, caption="Original Image", width=220)
-            with g2:
-                st.image(gradcam_img, caption="Grad-CAM Overlay", width=220)
 
             # ---------------- CLINICAL INTERPRETATION ----------------
-            if conf_level == "High":
-                st.success(get_confidence_message(conf_level))
-            elif conf_level == "Moderate":
-                st.warning(get_confidence_message(conf_level))
-            else:
-                st.error(get_confidence_message(conf_level))
 
             # ---------------- PDF REPORT ----------------
             st.markdown("""
